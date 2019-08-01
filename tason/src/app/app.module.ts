@@ -1,16 +1,29 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
+import { UsuariosComponent } from './usuarios/usuarios.component';
+import { HomeComponent } from './home/home.component';
+import { MasterUrlService } from './services/master-url.service';
+import { routing } from './app.routes';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    UsuariosComponent,
+    HomeComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule,
+    HttpClientModule,
+    routing
   ],
-  providers: [],
+  providers: [
+    MasterUrlService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
