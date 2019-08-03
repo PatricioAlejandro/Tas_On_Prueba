@@ -7,7 +7,7 @@ export class MasterUrlService {
 
   constructor() {
     // this._url = "https://examen-twj-chavezpatricio-patricioalejandro.c9users.io/";
-    this._url = "http://localhost:8080";
+    this._url = 'http://localhost:8080/';
   }
 
   get url(): string {

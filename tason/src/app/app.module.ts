@@ -8,6 +8,7 @@ import { UsuariosComponent } from './usuarios/usuarios.component';
 import { HomeComponent } from './home/home.component';
 import { MasterUrlService } from './services/master-url.service';
 import { routing } from './app.routes';
+import { FormControlValidators } from './funciones/formcontrol';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { routing } from './app.routes';
     routing
   ],
   providers: [
-    MasterUrlService
+    MasterUrlService,
+    FormControlValidators
   ],
   bootstrap: [AppComponent]
 })

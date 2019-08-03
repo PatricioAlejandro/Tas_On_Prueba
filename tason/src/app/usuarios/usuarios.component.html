@@ -1,3 +1,176 @@
-<p>
-  usuarios works!
-</p>
+<h1>{{title}}</h1>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <form (ngSubmit)="crearUsuario(NuevoUsuarioForm)" #NuevoUsuarioForm="ngForm">
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label>Cedula</label>
+              <input required maxlength="10" 
+                placeholder="Digite su cedula" 
+                type="number" 
+                class="form-control" 
+                name="id"
+                #id="ngModel"
+                [(ngModel)]="idText">
+            </div>
+            <div class="form-group">
+              <label>Nombre</label>
+              <input type="text" class="form-control">
+            </div>
+            <div class="form-group">
+              <label>Edad</label>
+              <input type="number" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="inputState">Pais</label>
+              <select id="inputState" class="form-control">
+                <option selected>Escoger...</option>
+                <option>Argentina</option>
+                <option>Bolivia</option>
+                <option>Brazil</option>
+                <option>Chile</option>
+                <option>Colombia</option>
+                <option>Ecuador</option>
+                <option>Paraguay</option>
+                <option>Peru</option>
+                <option>Uruguay</option>
+                <option>Venezuela</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Resumen</label>
+              <textarea class="form-control"></textarea>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label>Password</label>
+              <input type="password" class="form-control">
+            </div>
+            <div class="form-group">
+              <div class="row">
+                <legend class="col-form-label col-sm-2 pt-0">Genero:</legend>
+                <div class="col-sm-10">
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1"
+                      checked>
+                    <label class="form-check-label" for="gridRadios1">
+                      Masculino
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+                    <label class="form-check-label" for="gridRadios2">
+                      Femenino
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Telefono</label>
+              <input type="number" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="listaDeportes">Deporte Favorito</label>
+              <select id="listaDeportes" class="form-control">
+                <option selected>Escoger...</option>
+                <option>Futbol</option>
+                <option>Basquetbol</option>
+                <option>Box</option>
+                <option>MMA</option>
+                <option>Volleybol</option>
+                <option>Patinaje</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="formControlRange">Nivel Conocimiento Angular</label>
+              <input type="range" min="1" max="10" step="1" class="form-control-range" id="formControlRange">
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <button type="submit" class="btn btn-block btn-success">Crear
+          </button>
+        </div>
+
+        <!-- <div class="form-group">
+          <label>Usuario</label>
+          <input required minlength="4" type="text" class="form-control" placeholder="Digite su nombre" name="nombre"
+            [(ngModel)]="nuevoUsuario.nombre" #nombre="ngModel" #nombreElm>
+        </div>
+        <div class="form-group">
+          <label>Ciudad Residencia</label>
+          <input required type="text" class="form-control" placeholder="Digite su ciudad de Residencia actual"
+            name="ciudadResidencia" [(ngModel)]="nuevoUsuario.ciudadResidencia" #ciudadResidencia="ngModel" #nombreElm>
+        </div>
+        <div class="form-group">
+          <label>Fecha Nacimiento</label>
+          <input type="date" class="form-control" placeholder="Ingrese su fecha de nacimiento" name="fechaNacimiento"
+            [(ngModel)]="nuevoUsuario.fechaNacimiento" #fechaNacimiento="ngModel" #nombreElm>
+        </div> -->
+
+      </form>
+    </div>
+  </div>
+  <!-- <div class="row">
+    <div class="col-sm-12 animated flipInX" *ngFor="let usuario of usuarios">
+      <div class="text-left">
+
+        <h3>{{usuario.nombre}}</h3>
+        <p>ID: {{usuario.id}}</p>
+
+      </div>
+      <div class="row animated flipInY" [hidden]="!usuario.FormularioCerrado">
+        <div class="col-sm-5">
+          <button class="btn btn-block btn-info"
+            (click)="usuario.FormularioCerrado = !usuario.FormularioCerrado">Actualizar
+          </button>
+        </div>
+        <div class="col-sm-2"></div>
+        <div class="col-sm-5">
+          <button class="btn btn-block btn-danger" (click)="borrarUsuario(usuario.id)">Borrar</button>
+        </div>
+        <div class="col-sm-12">
+          <a [routerLink]="[usuario.id,'borrachera']">Ir a las Borracheras de {{usuario.nombre}}...</a>
+        </div>
+      </div>
+      <div class="div" [hidden]="usuario.FormularioCerrado">
+        <form action="">
+          <form class="animated bounceIn" (ngSubmit)="actualizarUsuario(usuario)" #EditFormUsuario="ngForm">
+            <div class="form-group">
+              <label>Nombre</label>
+              <input required type="text" class="form-control" placeholder="Digite un nombre de tienda como: Adidas"
+                name="nombre" [(ngModel)]="usuario.nombre" #nombre="ngModel" #nombreElm>
+            </div>
+            <div class="form-group">
+              <label>Ciudad Residencia</label>
+              <input required type="text" class="form-control" placeholder="Digite su ciudad de Residencia actual"
+                name="ciudadResidencia" [(ngModel)]="usuario.ciudadResidencia" #ciudadResidencia="ngModel" #nombreElm>
+            </div>
+            <div class="form-group">
+              <label>Fecha Nacimiento</label>
+              <input type="date" class="form-control" placeholder="Ingrese su fecha de nacimiento"
+                name="fechaNacimiento" [(ngModel)]="usuario.fechaNacimiento" #fechaNacimiento="ngModel" #nombreElm>
+            </div>
+
+            <button [disabled]="disabledButtons.EditBorracheraForm||!EditFormUsuario.valid" type="submit"
+              class="btn btn-block btn-success">Update
+            </button>
+            <button type="button" class="btn btn-block btn-warning"
+              (click)="usuario.FormularioCerrado = !usuario.FormularioCerrado">
+              Cancelar
+            </button>
+          </form>
+        </form>
+      </div>
+
+    </div>
+  </div> -->
+
+
+</div>
